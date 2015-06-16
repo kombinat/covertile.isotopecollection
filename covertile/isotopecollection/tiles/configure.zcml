@@ -1,0 +1,23 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    xmlns:zcml="http://namespaces.zope.org/zcml"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    i18n_domain="covertile.isotopecollection">
+
+    <include package="plone.tiles" file="meta.zcml" />
+    <include package="plone.tiles" />
+
+    <plone:tile
+        name="covertile.isotope.collection"
+        title="Isotope Collection Tile"
+        description="A tile showing collection items with isotope listing and filtering."
+        icon="++resource++covertile.isotopecollection/tile-isotope.png"
+        add_permission="cmf.ModifyPortalContent"
+        schema=".isotopecollection.IIsotopeCollectionTile"
+        class=".isotopecollection.IsotopeCollectionTile"
+        permission="zope2.View"
+        for="*"
+        />
+
+</configure>

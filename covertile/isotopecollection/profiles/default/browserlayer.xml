@@ -1,0 +1,4 @@
+<layers>
+    <layer name="covertile.isotopecollection.layer"
+           interface="covertile.isotopecollection.interfaces.IIsotopeCollectionTileLayer" />
+</layers>
