@@ -35,14 +35,17 @@
       </div>
 
 
-      <div tal:attributes="id string:isotope-${view/id}" class="js-isotope"
-           data-isotope-options='{"itemSelector": ".collection-item",
-                                  "layoutMode": "masonry"}'>
+      <div class="js-isotope"
+           tal:define="colWidth view/data/column_width|string:210;
+                       colGutter view/data/column_gutter|string:15"
+           tal:attributes='id string:isotope-${view/id};
+                           data-isotope-options string:{"itemSelector": ".collection-item", "layoutMode": "masonry", "masonry": {"gutter": ${colGutter}, "columnWidth": ${colWidth}}}'>
         <div class="collection-item" tal:repeat="item results">
           <div class="collection-item-wrapper"
                tal:define="obj item/getObject;
-                            obj_title obj/Title;
-                            obj_url obj/absolute_url">
+                           obj_title obj/Title;
+                           obj_url obj/absolute_url"
+               tal:attributes="class string:collection-item-wrapper ${view/column_css_class}">
             <tal:fields repeat="field view/configured_fields">
               <tal:image condition="python:field['id'] == 'image'">
                 <tal:block define="thumbnail python:view.thumbnail(obj);"
