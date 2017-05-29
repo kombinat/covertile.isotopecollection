@@ -7,12 +7,12 @@
         </value>
     </record>
 
-    <record name="collective.cover.controlpanel.ICoverSettings.available_tiles"
+    <!--record name="collective.cover.controlpanel.ICoverSettings.available_tiles"
           interface="collective.cover.controlpanel.ICoverSettings"
           field="available_tiles">
         <value purge="false">
           <element>covertile.isotope.collection</element>
         </value>
-      </record>
+      </record-->
 
 </registry>
