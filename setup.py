@@ -27,6 +27,8 @@ setup(name='covertile.isotopecollection',
           'setuptools',
           # -*- Extra requirements: -*-
           'collective.cover',
+          # reuse fix for column_css_class widget
+          'covertile.cycle2collection',
       ],
       entry_points="""
       # -*- Entry points: -*-

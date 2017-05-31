@@ -39,8 +39,7 @@ class IIsotopeCollectionTile(ICollectionTile):
 
     form.omitted('column_css_class')
     form.no_omit(IDefaultConfigureForm, 'column_css_class')
-    form.widget(column_css_class='collective.cover.tiles.' \
-        'configuration_widgets.cssclasswidget.CSSClassFieldWidget')
+    form.widget(column_css_class='covertile.cycle2collection.tiles.widgets.ColumnCSSClassFieldWidget')  # noqa
     column_css_class = schema.Choice(
         title=u"Column CSS Class",
         required=False,
@@ -78,6 +77,6 @@ class IsotopeCollectionTile(CollectionTile):
 
     @property
     def column_css_class(self):
-        # XXX fixme
         tile_conf = self.get_tile_configuration()
+        # ugly value translation
         return tile_conf.get('column_css_class', {}).values()[0][0]
