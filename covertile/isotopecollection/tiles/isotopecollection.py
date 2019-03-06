@@ -1,10 +1,11 @@
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from collective.cover.interfaces import ITileEditForm
-from collective.cover.tiles.collection import ICollectionTile, CollectionTile
+from collective.cover.tiles.collection import CollectionTile
+from collective.cover.tiles.collection import ICollectionTile
 from collective.cover.tiles.configuration_view import IDefaultConfigureForm
 from plone.autoform import directives as form
 from zope import schema
-from zope.interface.declarations import implements
+from zope.interface import implementer
 
 
 class IIsotopeCollectionTile(ICollectionTile):
@@ -28,6 +29,15 @@ class IIsotopeCollectionTile(ICollectionTile):
         default=15,
     )
 
+    form.omitted('grid_css_class')
+    form.no_omit(ITileEditForm, 'grid_css_class')
+    grid_css_class = schema.TextLine(
+        title=u"Grid CSS Class",
+        description=u'Bootstrap 3 Grid Column CSS class',
+        required=False,
+        default=u'',
+    )
+
     form.omitted('image_scale_dir')
     form.no_omit(ITileEditForm, 'image_scale_dir')
     image_scale_dir = schema.TextLine(
@@ -47,11 +57,18 @@ class IIsotopeCollectionTile(ICollectionTile):
         default=u'tile-default',
     )
 
+    form.omitted('more_link')
+    form.no_omit(IDefaultConfigureForm, 'more_link')
+    more_link = schema.Text(
+        title=u'More Link',
+        required=False,
+    )
 
+
+@implementer(IIsotopeCollectionTile)
 class IsotopeCollectionTile(CollectionTile):
-    implements(IIsotopeCollectionTile)
     index = ViewPageTemplateFile('isotopecollection.pt')
-    short_name = u'Isotope Collection tile'
+    short_name = u'Isotope Collection'
 
     def thumbnail(self, item):
         """Return a thumbnail of an image if the item has an image field and

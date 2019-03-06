@@ -6,8 +6,6 @@
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
     i18n_domain="covertile.isotopecollection">
 
-  <five:registerPackage package="." initialize=".initialize" />
-
   <genericsetup:registerProfile
       name="default"
       title="covertile.isotopecollection: A tile with isotope listing and filtering"
